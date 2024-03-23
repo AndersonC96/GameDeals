@@ -43,8 +43,11 @@
             <?php else: ?>
             <?php foreach ($deals as $deal): ?>
             <div class="deal">
+                <img src="<?php echo $deal['thumb']; ?>" alt="<?php echo $deal['title']; ?>">
                 <p><?php echo $deal['title']; ?></p>
-                <p>Preço: <?php echo $deal['salePrice']; ?></p>
+                <p>Preço: $ <?php echo $deal['normalPrice']; ?></p>
+                <p>Preço promocional: $ <?php echo $deal['salePrice']; ?></p>
+                <p>Loja: <?php echo $deal['storeID']; ?></p>
             </div>
             <?php endforeach; ?>
             <?php endif; ?>
