@@ -24,3 +24,13 @@
         }
         return $details;
     }
+    function getStores(){
+        $url = 'https://www.cheapshark.com/api/1.0/stores';
+        $response = file_get_contents($url);
+        $stores = json_decode($response, true);
+        $storeMap = [];
+        foreach ($stores as $store) {
+            $storeMap[$store['storeID']] = $store['storeName'];
+        }
+        return $storeMap;
+    }
