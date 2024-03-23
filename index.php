@@ -22,35 +22,34 @@
     <head>
         <meta charset="UTF-8">
         <title>Promoções de Jogos</title>
-        <link rel="stylesheet" href="styles.css">
+        <link rel="stylesheet" href="./CSS/index.css">
+        <link rel="icon" type="image/x-icon" href="https://cdn2.iconfinder.com/data/icons/xbox-one-controllers/500/gamer_white-512.png">
     </head>
     <body>
-        <div class="search-container">
-            <form action="index.php" method="get">
+        <nav class="navbar">
+            <form action="index.php" method="get" class="search-form">
                 <input type="text" name="search" placeholder="Buscar jogo..." value="<?php echo $searchTerm; ?>">
                 <select name="store">
                     <option value="">Todas as lojas</option>
+                    <!-- Opções de lojas aqui -->
                 </select>
                 <select name="price">
                     <option value="">Qualquer preço</option>
+                    <!-- Opções de faixa de preço aqui -->
                 </select>
                 <button type="submit">Buscar</button>
             </form>
-        </div>
+        </nav>
         <div class="deals-container">
-            <?php if (empty($deals)): ?>
-                <p>Nenhuma promoção encontrada.</p>
-            <?php else: ?>
             <?php foreach ($deals as $deal): ?>
             <div class="deal">
-                <img src="<?php echo $deal['thumb']; ?>" alt="<?php echo $deal['title']; ?>">
-                <p><?php echo $deal['title']; ?></p>
-                <p>Preço: $ <?php echo $deal['normalPrice']; ?></p>
-                <p>Preço promocional: $ <?php echo $deal['salePrice']; ?></p>
-                <p>Loja: <?php echo $deal['storeID']; ?></p>
+                <img src="<?php echo $deal['thumb']; ?>" alt="<?php echo htmlspecialchars($deal['title'], ENT_QUOTES, 'UTF-8'); ?>">
+                <p><b><?php echo htmlspecialchars($deal['title'], ENT_QUOTES, 'UTF-8'); ?></b></p>
+                <p><b>Preço</b>: $ <?php echo $deal['normalPrice']; ?></p>
+                <p><b>Preço promocional</b>: $ <?php echo $deal['salePrice']; ?></p>
+                <p><b>Loja</b>: <?php echo $deal['storeID']; ?></p>
             </div>
             <?php endforeach; ?>
-            <?php endif; ?>
         </div>
     </body>
 </html>
