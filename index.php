@@ -16,6 +16,7 @@
         $priceFilter = isset($_GET['price']) ? $_GET['price'] : '';
     }
     $deals = buscarPromocoes($searchTerm, $storeFilter, $priceFilter);
+    $stores = getStores();
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -31,7 +32,9 @@
                 <input type="text" name="search" placeholder="Buscar jogo..." value="<?php echo $searchTerm; ?>">
                 <select name="store">
                     <option value="">Todas as lojas</option>
-                    <!-- Opções de lojas aqui -->
+                    <?php foreach ($stores as $storeID => $storeName): ?>
+                    <option value="<?php echo $storeID; ?>"><?php echo $storeName; ?></option>
+                    <?php endforeach; ?>
                 </select>
                 <select name="price">
                     <option value="">Qualquer preço</option>
@@ -47,7 +50,7 @@
                 <p><b><?php echo htmlspecialchars($deal['title'], ENT_QUOTES, 'UTF-8'); ?></b></p>
                 <p><b>Preço</b>: $ <?php echo $deal['normalPrice']; ?></p>
                 <p><b>Preço promocional</b>: $ <?php echo $deal['salePrice']; ?></p>
-                <p><b>Loja</b>: <?php echo $deal['storeID']; ?></p>
+                <p><b>Loja</b>: <?php echo $stores[$deal['storeID']]; ?></p>
             </div>
             <?php endforeach; ?>
         </div>
