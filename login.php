@@ -32,28 +32,28 @@
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
-<head>
-    <meta charset="UTF-8">
-    <title>Login</title>
-    <link rel="stylesheet" href="./CSS/login.css">
-</head>
-<body>
-    <div class="login-container">
-        <h2>Login</h2>
-        <?php if (isset($error)): ?>
+    <head>
+        <meta charset="UTF-8">
+        <title>Login</title>
+        <link rel="stylesheet" href="./CSS/login.css">
+    </head>
+    <body>
+        <div class="login-container">
+            <h2>Login</h2>
+            <?php if (isset($error)): ?>
             <p class="error"><?php echo $error; ?></p>
-        <?php endif; ?>
-        <form action="login.php" method="post">
-            <div class="form-group">
-                <label for="username">Usuário:</label>
-                <input type="text" name="username" id="username" required>
-            </div>
-            <div class="form-group">
-                <label for="password">Senha:</label>
-                <input type="password" name="password" id="password" required>
-            </div>
-            <button type="submit">Login</button>
-        </form>
-    </div>
-</body>
+            <?php endif; ?>
+            <form action="login.php" method="post">
+                <div class="form-group">
+                    <label for="username">Usuário</label>
+                    <input type="text" name="username" id="username" required>
+                </div>
+                <div class="form-group">
+                    <label for="password">Senha</label>
+                    <input type="password" name="password" id="password" required>
+                </div>
+                <button type="submit">Login</button>
+            </form>
+        </div>
+    </body>
 </html>
