@@ -1,59 +1,134 @@
-body{
-    font-family: 'Arial', sans-serif;
-    background-color: #010935;
-    color: white;
+@import url('https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@400;600;700&family=Inter:wght@300;400;600&display=swap');
+
+:root {
+    --bg-dark: #09090b;
+    --bg-card: rgba(255, 255, 255, 0.03);
+    --primary-neon: #00f3ff;
+    --secondary-neon: #ff0055;
+    --text-main: #ffffff;
+    --text-muted: #94a3b8;
+    --glass-blur: blur(16px);
+    --glass-border: 1px solid rgba(255, 255, 255, 0.1);
+    --card-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+    --radius-md: 16px;
+    --radius-sm: 8px;
+    --font-heading: 'Chakra Petch', sans-serif;
+    --font-body: 'Inter', sans-serif;
+}
+
+* {
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--font-body);
+    background-color: var(--bg-dark);
+    color: var(--text-main);
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
+    min-height: 100vh;
+    background-image: 
+        radial-gradient(circle at 20% 30%, rgba(0, 243, 255, 0.15) 0%, transparent 25%),
+        radial-gradient(circle at 80% 70%, rgba(255, 0, 85, 0.15) 0%, transparent 25%);
 }
-.login-container{
-    background-color: #ADD8E6;
-    padding: 40px;
-    border-radius: 20px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    width: 300px;
-}
-.login-container h2{
+
+.login-container {
+    background: var(--bg-card);
+    backdrop-filter: var(--glass-blur);
+    -webkit-backdrop-filter: var(--glass-blur);
+    border: var(--glass-border);
+    box-shadow: var(--card-shadow);
+    padding: 50px 40px;
+    border-radius: var(--radius-md);
+    width: 100%;
+    max-width: 400px;
     text-align: center;
-    margin-bottom: 24px;
-    color: white;
 }
-.form-group{
+
+.login-container h2 {
+    margin-bottom: 30px;
+}
+
+.login-container h2 svg {
+    color: var(--primary-neon);
+    filter: drop-shadow(0 0 10px rgba(0, 243, 255, 0.5));
+}
+
+.form-group {
     margin-bottom: 20px;
+    text-align: left;
 }
-.form-group label{
+
+.form-group label {
     display: block;
     margin-bottom: 8px;
-    color: white;
+    color: var(--text-muted);
+    font-size: 0.9rem;
 }
-.form-group input{
+
+.form-group input {
     width: 100%;
-    padding: 10px;
-    border: 1px solid #ddd;
-    border-radius: 10px;
-    box-sizing: border-box;
-    background-color: #f0f8ff;
-    color: #010935;
+    padding: 12px 15px;
+    background: rgba(0, 0, 0, 0.3);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: var(--radius-sm);
+    color: var(--text-main);
+    font-size: 1rem;
+    outline: none;
+    transition: border-color 0.3s, box-shadow 0.3s;
 }
-button{
+
+.form-group input:focus {
+    border-color: var(--primary-neon);
+    box-shadow: 0 0 10px rgba(0, 243, 255, 0.3);
+}
+
+button {
     width: 100%;
-    padding: 10px;
-    background-color: #010935;
-    border: none;
-    border-radius: 10px;
-    color: white;
-    font-size: 16px;
+    padding: 12px;
+    background: transparent;
+    border: 1px solid var(--primary-neon);
+    color: var(--primary-neon);
+    font-family: var(--font-heading);
+    font-size: 1rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    border-radius: var(--radius-sm);
     cursor: pointer;
-    transition: background-color 0.3s ease;
+    transition: all 0.3s ease;
+    margin-top: 10px;
 }
-button:hover{
-    background-color: #003366;
+
+button:hover {
+    background: var(--primary-neon);
+    color: #000;
+    box-shadow: 0 0 20px var(--primary-neon);
 }
-.error{
-    color: #FF6347;
+
+.error {
+    background: rgba(255, 0, 85, 0.2);
+    border: 1px solid var(--secondary-neon);
+    color: var(--secondary-neon);
+    padding: 10px;
+    border-radius: var(--radius-sm);
     margin-bottom: 20px;
-    text-align: center;
+    font-size: 0.9rem;
+}
+
+.register-link {
+    margin-top: 25px;
+    color: var(--text-muted);
+    font-size: 0.9rem;
+}
+
+.register-link a {
+    color: var(--primary-neon);
+    text-decoration: none;
+}
+
+.register-link a:hover {
+    text-decoration: underline;
 }

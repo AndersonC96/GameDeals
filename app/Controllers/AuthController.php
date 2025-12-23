@@ -41,4 +41,45 @@ class AuthController extends Controller {
         session_destroy();
         $this->redirect('/login');
     }
+
+    public function register() {
+        if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] === true) {
+            $this->redirect('/');
+        }
+        $this->view('register');
+    }
+
+    public function store() {
+        $username = trim($_POST['username'] ?? '');
+        $password = $_POST['password'] ?? '';
+        $confirmPassword = $_POST['confirm_password'] ?? '';
+        $error = '';
+        $success = '';
+
+        if (empty($username) || empty($password) || empty($confirmPassword)) {
+            $error = "Por favor, preencha todos os campos.";
+        } elseif (strlen($username) < 3) {
+            $error = "O usuário deve ter pelo menos 3 caracteres.";
+        } elseif (strlen($password) < 4) {
+            $error = "A senha deve ter pelo menos 4 caracteres.";
+        } elseif ($password !== $confirmPassword) {
+            $error = "As senhas não coincidem.";
+        } else {
+            $userModel = new User();
+            $existingUser = $userModel->findByUsername($username);
+            
+            if ($existingUser) {
+                $error = "Este nome de usuário já está em uso.";
+            } else {
+                $created = $userModel->create($username, $password);
+                if ($created) {
+                    $success = "Conta criada com sucesso! Faça login.";
+                } else {
+                    $error = "Erro ao criar conta. Tente novamente.";
+                }
+            }
+        }
+
+        $this->view('register', ['error' => $error, 'success' => $success]);
+    }
 }

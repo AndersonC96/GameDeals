@@ -13,17 +13,25 @@ class HomeController extends Controller {
     }
 
     public function index() {
-        $searchTerm = isset($_GET['search']) ? $_GET['search'] : '';
-        $storeFilter = isset($_GET['store']) ? $_GET['store'] : '';
+        $searchTerm = $_GET['search'] ?? '';
+        $storeFilter = $_GET['store'] ?? '';
+        $priceFilter = $_GET['price'] ?? '';
+        $page = isset($_GET['page']) ? max(0, intval($_GET['page'])) : 0;
+        $sortBy = $_GET['sort'] ?? 'Deal Rating';
+        $minDiscount = isset($_GET['discount']) ? intval($_GET['discount']) : 0;
         
-        $deals = $this->service->getDeals($searchTerm, $storeFilter);
+        $deals = $this->service->getDeals($searchTerm, $storeFilter, $priceFilter, $page, $sortBy, $minDiscount);
         $stores = $this->service->getStores();
 
         $this->view('home', [
             'deals' => $deals,
             'stores' => $stores,
             'searchTerm' => $searchTerm,
-            'storeFilter' => $storeFilter
+            'storeFilter' => $storeFilter,
+            'priceFilter' => $priceFilter,
+            'currentPage' => $page,
+            'sortBy' => $sortBy,
+            'minDiscount' => $minDiscount
         ]);
     }
 }

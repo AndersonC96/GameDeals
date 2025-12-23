@@ -27,6 +27,7 @@
                 </div>
                 <button type="submit">Login</button>
             </form>
+            <p class="register-link">Não tem conta? <a href="register">Cadastre-se</a></p>
         </div>
     </body>
 </html>

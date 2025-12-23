@@ -5,17 +5,27 @@ namespace App\Services;
 class CheapSharkService {
     const API_URL = 'https://www.cheapshark.com/api/1.0';
 
-    public function getDeals($searchTerm = '', $storeFilter = '', $priceFilter = '') {
+    public function getDeals($searchTerm = '', $storeFilter = '', $priceFilter = '', $page = 0, $sortBy = 'Deal Rating', $minDiscount = 0) {
         $url = self::API_URL . "/deals?";
         
-        $params = [];
+        $params = [
+            'pageNumber' => $page,
+            'pageSize' => 20,
+            'sortBy' => $sortBy
+        ];
+        
         if (!empty($searchTerm)) {
             $params['title'] = $searchTerm;
         }
         if (!empty($storeFilter)) {
             $params['storeID'] = $storeFilter;
         }
-        // Price filter logic could be added here if API supports it or manually filtered
+        if ($minDiscount > 0) {
+            $params['onSale'] = 1;
+        }
+        if (!empty($priceFilter) && is_numeric($priceFilter)) {
+            $params['upperPrice'] = $priceFilter;
+        }
         
         $url .= http_build_query($params);
 
