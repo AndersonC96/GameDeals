@@ -25,18 +25,24 @@ class Router {
         $uri = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
         $method = $_SERVER['REQUEST_METHOD'];
         
-        // Handle sub-directory installation
-        $scriptName = dirname($_SERVER['SCRIPT_NAME']);
-        // Normalize slashes
-        $scriptName = str_replace('\\', '/', $scriptName);
+        // Handle sub-directory installation: /GameDeals/public/
+        // Remove /GameDeals/public prefix from URI
+        $basePath = '/GameDeals/public';
         
-        // Remove script path from URI
-        if (strpos($uri, $scriptName) === 0) {
-            $uri = substr($uri, strlen($scriptName));
+        if (strpos($uri, $basePath) === 0) {
+            $uri = substr($uri, strlen($basePath));
         }
         
-        // Ensure URI starts with /
+        // Also handle if index.php is in the URI
+        if (strpos($uri, '/index.php') === 0) {
+            $uri = substr($uri, strlen('/index.php'));
+        }
+        
+        // Ensure URI starts with / and handle empty case
         $uri = '/' . ltrim($uri, '/');
+        if ($uri === '/') {
+            $uri = '/';
+        }
 
         foreach ($this->routes as $route) {
             if ($route['uri'] === $uri && $route['method'] == $method) {
