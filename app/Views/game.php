@@ -9,6 +9,7 @@
         <link rel="stylesheet" href="assets/css/components.css">
         <link rel="stylesheet" href="assets/css/responsive.css">
         <link rel="icon" type="image/x-icon" href="https://cdn2.iconfinder.com/data/icons/xbox-one-controllers/500/gamer_white-512.png">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
         <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
         <style>
             .game-header { display: flex; gap: 30px; padding: 40px; flex-wrap: wrap; }
@@ -19,7 +20,7 @@
             .deal-row:hover { background: var(--bg-card-hover); }
             .share-buttons { display: flex; gap: 10px; margin-top: 20px; flex-wrap: wrap; }
             .share-btn { padding: 8px 16px; border-radius: var(--radius-sm); border: none; cursor: pointer; font-size: 0.9rem; transition: all 0.3s; display: flex; align-items: center; gap: 5px; }
-            .share-twitter { background: #1DA1F2; color: white; }
+            .share-twitter { background: #000000; color: white; }
             .share-whatsapp { background: #25D366; color: white; }
             .share-copy { background: var(--bg-card); color: var(--text-main); border: 1px solid var(--text-muted); }
             .share-btn:hover { transform: scale(1.05); }
@@ -50,9 +51,9 @@
                     
                     <!-- Share Buttons -->
                     <div class="share-buttons">
-                        <button class="share-btn share-twitter" onclick="shareTwitter()">🐦 Twitter</button>
-                        <button class="share-btn share-whatsapp" onclick="shareWhatsApp()">📱 WhatsApp</button>
-                        <button class="share-btn share-copy" onclick="copyLink()">📋 Copiar Link</button>
+                        <button class="share-btn share-twitter" onclick="shareTwitter()"><i class="bi bi-twitter-x"></i> </button>
+                        <button class="share-btn share-whatsapp" onclick="shareWhatsApp()"><i class="bi bi-whatsapp"></i> WhatsApp</button>
+                        <button class="share-btn share-copy" onclick="copyLink()"><i class="bi bi-clipboard"></i> Copiar Link</button>
                     </div>
                 </div>
             </div>

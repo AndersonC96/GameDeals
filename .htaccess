@@ -1,5 +1,8 @@
 RewriteEngine On
 
-# Redirect all requests to public folder
+# Allow direct access to init_db.php
+RewriteRule ^init_db\.php$ - [L]
+
+# Redirect all other requests to public folder
 RewriteCond %{REQUEST_URI} !^/GameDeals/public/
 RewriteRule ^(.*)$ public/$1 [L]
