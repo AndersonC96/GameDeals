@@ -9,6 +9,8 @@
         <link rel="stylesheet" href="assets/css/components.css">
         <link rel="stylesheet" href="assets/css/responsive.css">
         <link rel="icon" type="image/x-icon" href="https://cdn2.iconfinder.com/data/icons/xbox-one-controllers/500/gamer_white-512.png">
+        <link rel="manifest" href="manifest.json">
+        <meta name="theme-color" content="#00f3ff">
     </head>
     <body>
         <?php include __DIR__ . '/partials/navbar.php'; ?>
@@ -23,7 +25,10 @@
             <?php endif; ?>
         </div>
         
-        <?php include __DIR__ . '/partials/pagination.php'; ?>
+        <!-- Infinite Scroll Loader -->
+        <div id="scroll-loader" style="display: flex; justify-content: center; padding: 30px;">
+            <div class="loader"></div>
+        </div>
         
         <?php include __DIR__ . '/partials/footer.php'; ?>
         
@@ -37,6 +42,11 @@
                 "max-glare": 0.2,
                 scale: 1.05
             });
+            
+            // Register Service Worker for PWA
+            if ('serviceWorker' in navigator) {
+                navigator.serviceWorker.register('sw.js').catch(err => console.log('SW Error:', err));
+            }
         </script>
     </body>
 </html>

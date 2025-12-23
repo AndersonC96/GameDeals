@@ -40,4 +40,14 @@ $router->post('/wishlist/remove', 'WishlistController@remove');
 
 $router->get('/game', 'GameController@show');
 
+// Alert Routes
+$router->get('/alerts', 'AlertController@index');
+$router->post('/alerts/add', 'AlertController@add');
+$router->post('/alerts/remove', 'AlertController@remove');
+
+// Admin Routes
+$router->get('/admin', 'AdminController@index');
+$router->get('/admin/users', 'AdminController@users');
+$router->post('/admin/delete-user', 'AdminController@deleteUser');
+
 $router->dispatch();

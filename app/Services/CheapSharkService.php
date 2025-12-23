@@ -4,6 +4,11 @@ namespace App\Services;
 
 class CheapSharkService {
     const API_URL = 'https://www.cheapshark.com/api/1.0';
+    private $cache;
+
+    public function __construct() {
+        $this->cache = new CacheService();
+    }
 
     public function getDeals($searchTerm = '', $storeFilter = '', $priceFilter = '', $page = 0, $sortBy = 'Deal Rating', $minDiscount = 0) {
         $url = self::API_URL . "/deals?";
@@ -29,12 +34,12 @@ class CheapSharkService {
         
         $url .= http_build_query($params);
 
-        return $this->request($url);
+        return $this->request($url, 180); // Cache for 3 minutes
     }
 
     public function getStores() {
         $url = self::API_URL . "/stores";
-        $stores = $this->request($url);
+        $stores = $this->request($url, 3600); // Cache for 1 hour
         
         $storeMap = [];
         if ($stores) {
@@ -49,15 +54,24 @@ class CheapSharkService {
 
     public function getGameDetails($gameID) {
         $url = self::API_URL . "/games?id=" . $gameID;
-        return $this->request($url);
+        return $this->request($url, 600); // Cache for 10 minutes
     }
 
-    private function request($url) {
-        // Implement simple caching here if needed later
+    private function request($url, $cacheTTL = 300) {
+        // Check cache first
+        $cached = $this->cache->get($url);
+        if ($cached !== null) {
+            return $cached;
+        }
+        
+        // Make API request
         $response = @file_get_contents($url);
         if ($response !== false) {
-            return json_decode($response, true);
+            $data = json_decode($response, true);
+            $this->cache->set($url, $data, $cacheTTL);
+            return $data;
         }
         return [];
     }
 }
+

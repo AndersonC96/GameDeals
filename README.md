@@ -1,65 +1,72 @@
 # 🎮 GameDeals
 
-Um agregador de promoções de jogos com design Cyberpunk moderno, construído com PHP MVC.
+Agregador de promoções de jogos com design **Cyberpunk** moderno e arquitetura **PHP MVC**.
 
 ![PHP](https://img.shields.io/badge/PHP-8.x-777BB4?logo=php)
 ![MySQL](https://img.shields.io/badge/MySQL-Database-4479A1?logo=mysql)
-![License](https://img.shields.io/badge/License-MIT-green)
+![PWA](https://img.shields.io/badge/PWA-Enabled-5A0FC8?logo=pwa)
+![PHPUnit](https://img.shields.io/badge/PHPUnit-Tests-4AA94A)
 
 ## ✨ Features
 
-- **Busca e Filtros**: Encontre jogos por nome, loja, preço máximo
-- **Ordenação**: Por melhor oferta, menor preço, maior desconto, nome
-- **Paginação**: Navegue por centenas de ofertas
-- **Lista de Desejos**: Salve jogos favoritos (requer login)
-- **Detalhes do Jogo**: Compare preços entre lojas, veja histórico
-- **Autenticação**: Login/Registro de usuários
+### Core
+- 🔍 Busca e Filtros (loja, preço, ordenação)
+- ♾️ Infinite Scroll
+- ❤️ Lista de Desejos
+- 🔔 Alertas de Preço
+- 📊 Histórico de Preços (Chart.js)
 
-## 🚀 Tecnologias
-
-| Frontend | Backend | API |
-|----------|---------|-----|
-| CSS3 (Glassmorphism) | PHP 8.x | [CheapShark API](https://apidocs.cheapshark.com/) |
-| Vanilla JS | MySQL | |
-| Vanilla Tilt.js | MVC Custom | |
+### Avançadas
+- 🌗 Dark/Light Mode
+- 📱 PWA (instalável)
+- ⚡ Cache de API
+- � Compartilhamento Social (Twitter, WhatsApp)
+- 🛡️ Dashboard Admin
 
 ## 📁 Estrutura
 
 ```
 GameDeals/
 ├── app/
-│   ├── Controllers/    # HomeController, AuthController, etc.
-│   ├── Core/           # Router, Database, Controller base
-│   ├── Models/         # User, Wishlist
-│   ├── Services/       # CheapSharkService (API)
-│   └── Views/          # Templates PHP + Partials
+│   ├── Controllers/ (6)  → Home, Auth, Game, Wishlist, Alert, Admin
+│   ├── Models/ (3)       → User, Wishlist, PriceAlert
+│   ├── Services/ (2)     → CheapSharkService, CacheService
+│   └── Views/ (12)       → Páginas + Partials + Admin
 ├── public/
-│   ├── assets/         # CSS, JS, Images
-│   └── index.php       # Entry point
-└── init_db.php         # Script de inicialização do DB
+│   ├── manifest.json     → PWA
+│   └── sw.js             → Service Worker
+├── tests/                → PHPUnit Tests
+└── composer.json
 ```
 
 ## ⚙️ Instalação
 
-1. Clone o repositório para `htdocs`:
-   ```bash
-   git clone https://github.com/seu-usuario/GameDeals.git
-   ```
+```bash
+# Clone
+git clone https://github.com/seu-usuario/GameDeals.git
 
-2. Inicie Apache e MySQL no XAMPP
+# Inicie Apache + MySQL no XAMPP
 
-3. Acesse `http://localhost/GameDeals/init_db.php` para criar o banco
+# Inicialize o banco
+http://localhost/GameDeals/init_db.php
 
-4. Acesse `http://localhost/GameDeals/public/`
+# Acesse
+http://localhost/GameDeals/
+```
 
-5. Login padrão: `gamer` / `123`
+### Usuários de Teste
+| User | Pass | Role |
+|------|------|------|
+| gamer | 123 | Normal |
+| admin | admin123 | Admin |
 
-## 🎨 Design
+## 🧪 Testes
 
-- **Tema**: Cyberpunk/Gamer com cores Neon
-- **Efeitos**: Glassmorphism, 3D Tilt, Gradientes
-- **Responsivo**: Mobile-first com Bottom Navigation
+```bash
+composer install
+composer test
+```
 
 ## 📄 Licença
 
-MIT License - Projeto de Portfólio
+MIT - Projeto de Portfólio

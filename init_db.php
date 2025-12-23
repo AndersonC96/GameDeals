@@ -62,6 +62,36 @@ try {
         echo "Usuário de teste já existe.\n";
     }
 
+    // Create Admin User
+    $adminUser = "admin";
+    $adminPass = password_hash("admin123", PASSWORD_DEFAULT);
+    
+    $check = $conn->query("SELECT id FROM users WHERE username = '$adminUser'");
+    if ($check->num_rows == 0) {
+        $sqlAdmin = "INSERT INTO users (username, password) VALUES ('$adminUser', '$adminPass')";
+        if ($conn->query($sqlAdmin) === TRUE) {
+            echo "Usuário admin criado (User: admin, Pass: admin123).\n";
+        }
+    } else {
+        echo "Usuário admin já existe.\n";
+    }
+
+    // 7. Create Price Alerts Table
+    $sqlAlerts = "CREATE TABLE IF NOT EXISTS price_alerts (
+        id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+        user_id INT(6) UNSIGNED NOT NULL,
+        game_id VARCHAR(50) NOT NULL,
+        title VARCHAR(255) NOT NULL,
+        target_price DECIMAL(10, 2) NOT NULL,
+        current_price DECIMAL(10, 2),
+        thumb VARCHAR(255),
+        created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+        FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE
+    )";
+    if ($conn->query($sqlAlerts) === TRUE) {
+        echo "Tabela 'price_alerts' verificada/criada.\n";
+    }
+
     $conn->close();
     echo "\nConfiguração do Banco de Dados Concluída com Sucesso!";
 

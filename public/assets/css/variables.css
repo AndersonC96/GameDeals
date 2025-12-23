@@ -26,3 +26,20 @@
     --radius-md: 16px;
     --radius-lg: 24px;
 }
+
+/* Light Theme */
+[data-theme="light"] {
+    --bg-dark: #f0f4f8;
+    --bg-card: rgba(0, 0, 0, 0.03);
+    --bg-card-hover: rgba(0, 0, 0, 0.08);
+    
+    --primary-neon: #0077cc;
+    --secondary-neon: #cc0044;
+    --accent-green: #00aa66;
+    
+    --text-main: #1a1a2e;
+    --text-muted: #64748b;
+    
+    --glass-border: 1px solid rgba(0, 0, 0, 0.1);
+    --card-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.1);
+}

@@ -19,9 +19,22 @@ class HomeController extends Controller {
         $page = isset($_GET['page']) ? max(0, intval($_GET['page'])) : 0;
         $sortBy = $_GET['sort'] ?? 'Deal Rating';
         $minDiscount = isset($_GET['discount']) ? intval($_GET['discount']) : 0;
+        $isAjax = isset($_GET['ajax']) && $_GET['ajax'] === '1';
         
         $deals = $this->service->getDeals($searchTerm, $storeFilter, $priceFilter, $page, $sortBy, $minDiscount);
         $stores = $this->service->getStores();
+
+        // If AJAX request, return only the game cards
+        if ($isAjax) {
+            if (empty($deals)) {
+                echo '';
+                return;
+            }
+            foreach ($deals as $deal) {
+                include "../app/Views/partials/game_card.php";
+            }
+            return;
+        }
 
         $this->view('home', [
             'deals' => $deals,

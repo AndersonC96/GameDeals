@@ -1,3 +1,33 @@
+/* Loader Animation */
+.loader {
+    width: 40px;
+    height: 40px;
+    border: 3px solid var(--bg-card);
+    border-top-color: var(--primary-neon);
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
+
+/* Theme Toggle Button */
+.theme-toggle {
+    background: transparent;
+    border: 1px solid var(--text-muted);
+    color: var(--text-main);
+    border-radius: var(--radius-sm);
+    padding: 8px;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.theme-toggle:hover {
+    border-color: var(--primary-neon);
+    color: var(--primary-neon);
+}
+
 /* Pagination */
 .pagination {
     display: flex;

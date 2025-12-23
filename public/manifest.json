@@ -1,0 +1,17 @@
+{
+    "name": "GameDeals",
+    "short_name": "GameDeals",
+    "description": "Agregador de promoções de jogos com tema Cyberpunk",
+    "start_url": "/GameDeals/public/",
+    "display": "standalone",
+    "background_color": "#09090b",
+    "theme_color": "#00f3ff",
+    "icons": [
+        {
+            "src": "https://cdn2.iconfinder.com/data/icons/xbox-one-controllers/500/gamer_white-512.png",
+            "sizes": "512x512",
+            "type": "image/png",
+            "purpose": "any maskable"
+        }
+    ]
+}
