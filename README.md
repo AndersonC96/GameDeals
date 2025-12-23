@@ -18,9 +18,9 @@
 
 ## 📋 Sobre o Projeto
 
-O **GameDeals** é um agregador inteligente de promoções de jogos, desenvolvido com o propósito de conectar gamers às melhores oportunidades do mercado em tempo real. Ele monitora dezenas de lojas digitais renomadas (como Steam, Epic Games, GOG e Humble Bundle) para garantir que você nunca perca um desconto.
+O **GameDeals** é um agregador inteligente de promoções de jogos criado para conectar gamers às melhores oportunidades do mercado em tempo real. A aplicação monitora diversas lojas digitais de referência — como Steam, Epic Games, GOG e Humble Bundle — garantindo que nenhum desconto relevante passe despercebido.
 
-Mais do que apenas uma ferramenta de busca, este projeto foi concebido como um **estudo de caso em Engenharia de Software Moderna**. Ele demonstra como criar uma aplicação robusta e escalável utilizando **PHP 8** puro com arquitetura **MVC**, sem a dependência de frameworks pesados. Frontend e UX foram priorizados, adotando tendências visuais de 2025/2026 como o **Glassmorphism** e a estética **Cyberpunk**, provando que interfaces web podem ser, ao mesmo tempo, performáticas, funcionais e visualmente imersivas.
+Mais do que uma simples ferramenta de busca, o projeto foi concebido como um estudo de caso em Engenharia de Software Moderna. Ele explora a construção de uma aplicação robusta e escalável utilizando PHP 8 puro, estruturado em uma arquitetura MVC, sem depender de frameworks pesados. O frontend e a experiência do usuário foram tratados como prioridade, adotando uma identidade visual moderna — com influências de Glassmorphism e estética Cyberpunk — demonstrando que interfaces web podem ser performáticas, funcionais e visualmente imersivas ao mesmo tempo.
 
 ### 🎯 Objetivo
 
