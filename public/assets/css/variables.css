@@ -1,0 +1,28 @@
+:root {
+    /* Colors */
+    --bg-dark: #09090b;
+    --bg-card: rgba(255, 255, 255, 0.03);
+    --bg-card-hover: rgba(255, 255, 255, 0.08);
+    
+    --primary-neon: #00f3ff;
+    --secondary-neon: #ff0055;
+    --accent-green: #00ff9d;
+    
+    --text-main: #ffffff;
+    --text-muted: #94a3b8;
+    
+    /* Effects */
+    --glass-blur: blur(16px);
+    --glass-border: 1px solid rgba(255, 255, 255, 0.1);
+    --neon-shadow: 0 0 10px rgba(0, 243, 255, 0.3);
+    --card-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+    
+    /* Typography */
+    --font-heading: 'Chakra Petch', sans-serif; /* Tech feel */
+    --font-body: 'Inter', sans-serif;
+    
+    /* Spacing */
+    --radius-sm: 8px;
+    --radius-md: 16px;
+    --radius-lg: 24px;
+}
