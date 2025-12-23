@@ -18,7 +18,9 @@
 
 ## 📋 Sobre o Projeto
 
-O **GameDeals** é uma aplicação web que agrega e exibe promoções de jogos de diversas lojas digitais (Steam, GOG, Humble Bundle, etc.) utilizando a API do CheapShark. O projeto foi desenvolvido com foco em **UI/UX moderno** seguindo as tendências de 2025/2026, incluindo Glassmorphism, efeitos 3D e tema Cyberpunk.
+O **GameDeals** é um agregador inteligente de promoções de jogos, desenvolvido com o propósito de conectar gamers às melhores oportunidades do mercado em tempo real. Ele monitora dezenas de lojas digitais renomadas (como Steam, Epic Games, GOG e Humble Bundle) para garantir que você nunca perca um desconto.
+
+Mais do que apenas uma ferramenta de busca, este projeto foi concebido como um **estudo de caso em Engenharia de Software Moderna**. Ele demonstra como criar uma aplicação robusta e escalável utilizando **PHP 8** puro com arquitetura **MVC**, sem a dependência de frameworks pesados. Frontend e UX foram priorizados, adotando tendências visuais de 2025/2026 como o **Glassmorphism** e a estética **Cyberpunk**, provando que interfaces web podem ser, ao mesmo tempo, performáticas, funcionais e visualmente imersivas.
 
 ### 🎯 Objetivo
 
